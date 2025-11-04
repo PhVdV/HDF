@@ -470,7 +470,56 @@ var bottomRightContainerDiv = document.getElementById('bottom-right-container')
 
 //title
 
+var Title = new ol.control.Control({
+    element: (() => {
+        var titleElement = document.createElement('div');
+        titleElement.className = 'top-right-title ol-control';
+        titleElement.innerHTML = '<h2 class="project-title">Louvain-la-Neuve Saisons 2025 – Nidification de l’Hirondelle de fenêtre - Delichon urbicum  (nids artificiels)</h2>';
+        return titleElement;
+    })(),
+    target: 'top-right-container'
+});
+map.addControl(Title)
+    
 //abstract
+
+var Abstract = new ol.control.Control({
+    element: (() => {
+        var titleElement = document.createElement('div');
+        titleElement.className = 'top-right-abstract ol-control';
+        titleElement.id = 'abstract';
+
+        var linkElement = document.createElement('a');
+
+        if (1810 > 240) {
+            linkElement.setAttribute("onmouseenter", "showAbstract()");
+            linkElement.setAttribute("onmouseleave", "hideAbstract()");
+            linkElement.innerHTML = 'i';
+
+            window.hideAbstract = function() {
+                linkElement.classList.add("project-abstract");
+                linkElement.classList.remove("project-abstract-uncollapsed");
+                linkElement.innerHTML = 'i';
+            }
+
+            window.showAbstract = function() {
+                linkElement.classList.remove("project-abstract");
+                linkElement.classList.add("project-abstract-uncollapsed");
+                linkElement.innerHTML = 'Ce travail présente la cartographie et l’analyse du suivi des hirondelles de fenêtre (Delichon urbicum) installées dans des nichoirs artificiels à Louvain-la-Neuve lors de la saison de reproduction 2025. Dans un contexte urbain en expansion, la Université catholique de Louvain (UCLouvain), par le biais du Earth and Life Institute (ELI), a mené depuis 2020 un suivi régulier, combinant baguage des jeunes, inventaire des nichoirs et analyses spatiales. Université catholique de Louvain<br />Les données utilisées englobent l’occupation des nids, la taille des pontes, l’éclosion et l’envol des jeunes. Nous avons généré une carte thématique du « succès reproducteur moyen par colonie », illustrant la localisation spatiale des colonies, différenciée par symboles selon leur productivité. L’analyse spatiale (fonction L de Ripley, test Getis-Ord Gi*) révèle une tendance à la regroupement des colonies dans des secteurs de façades favorables (souvent orientées sud/sud-est) et à proximité de zones ouvertes propices à l’alimentation.<br />Les résultats montrent un taux d’occupation des nichoirs supérieur à 70 %, avec un succès reproducteur moyen d’environ 0,7 jeune par œuf pondus, ce qui témoigne d’une adaptation favorable des couples nicheurs aux dispositifs artificiels installés pour compenser le recul des sites naturels. La forte fidélité au site, observée à partir du baguage, suggère un ancrage local des populations.<br />Ces résultats vont de pair avec l’objectif du suivi : soutenir la conservation des hirondelles en milieu urbain et évaluer l’efficacité des interventions (nichoirs, baguage). La carte fournit désormais un outil visuel essentiel pour les gestionnaires urbains, illustrant les zones de forte productivité et aidant à cibler les futurs efforts de conservation dans la ville de Louvain-la-Neuve.';
+            }
+
+            hideAbstract();
+        } else {
+            linkElement.classList.add("project-abstract-uncollapsed");
+            linkElement.innerHTML = 'Ce travail présente la cartographie et l’analyse du suivi des hirondelles de fenêtre (Delichon urbicum) installées dans des nichoirs artificiels à Louvain-la-Neuve lors de la saison de reproduction 2025. Dans un contexte urbain en expansion, la Université catholique de Louvain (UCLouvain), par le biais du Earth and Life Institute (ELI), a mené depuis 2020 un suivi régulier, combinant baguage des jeunes, inventaire des nichoirs et analyses spatiales. Université catholique de Louvain<br />Les données utilisées englobent l’occupation des nids, la taille des pontes, l’éclosion et l’envol des jeunes. Nous avons généré une carte thématique du « succès reproducteur moyen par colonie », illustrant la localisation spatiale des colonies, différenciée par symboles selon leur productivité. L’analyse spatiale (fonction L de Ripley, test Getis-Ord Gi*) révèle une tendance à la regroupement des colonies dans des secteurs de façades favorables (souvent orientées sud/sud-est) et à proximité de zones ouvertes propices à l’alimentation.<br />Les résultats montrent un taux d’occupation des nichoirs supérieur à 70 %, avec un succès reproducteur moyen d’environ 0,7 jeune par œuf pondus, ce qui témoigne d’une adaptation favorable des couples nicheurs aux dispositifs artificiels installés pour compenser le recul des sites naturels. La forte fidélité au site, observée à partir du baguage, suggère un ancrage local des populations.<br />Ces résultats vont de pair avec l’objectif du suivi : soutenir la conservation des hirondelles en milieu urbain et évaluer l’efficacité des interventions (nichoirs, baguage). La carte fournit désormais un outil visuel essentiel pour les gestionnaires urbains, illustrant les zones de forte productivité et aidant à cibler les futurs efforts de conservation dans la ville de Louvain-la-Neuve.';
+        }
+
+        titleElement.appendChild(linkElement);
+        return titleElement;
+    })(),
+    target: 'top-right-container'
+});
+map.addControl(Abstract);
 
 
 //geolocate
